@@ -1,6 +1,6 @@
 class Brut:
     def __init__(self, characters="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789/@?!:;.,~-", min=1, max=4, infos=1, wait_info=1):
-        if min < max:
+        if min < max or min <= max:
             if infos==1:
                 start_time = datetime.now()
             for n in range(min, max+1):
