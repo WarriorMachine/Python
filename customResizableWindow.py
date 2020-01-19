@@ -3,7 +3,6 @@ import time
 import os
 import win32api
 
-
 main = Tk()
 main.title("ResizableWindow")
 main.overrideredirect(1)
@@ -28,6 +27,7 @@ class Window_R():
         maskechelle8 = Frame(resizebarpage, bd=0, bg=bgcornerbar, cursor="size_nw_se")
         maskechelle8.place(x=width-(sizebar+1), y=height-(sizebar+1), width=sizebar+1, height=sizebar+1)
         while 1:
+            mouseEvent = win32api.GetKeyState(0x01)
             x = princippage.winfo_rootx() #x = sL
             y = princippage.winfo_rooty() #y = sH
             mouseX = princippage.winfo_pointerx()
@@ -35,15 +35,16 @@ class Window_R():
             print(str(x)+" "+str(y)+" "+str(mouseX)+" "+str(mouseY))
             time.sleep(0.01)
             if mouseX>=x and mouseX<=x+sizebar-1 and mouseY>=y and mouseY<=y+height or mouseX>=x+width-sizebar and mouseX<=x+width and mouseY>=y and mouseY<=y+height or mouseY>=y and mouseY<=y+sizebar-1 and mouseX>=x and mouseX<=x+width or mouseY>=y+height-sizebar and mouseY<=y+height and mouseX>=x and mouseX<=x+width:
-                print("ouiiii")
+                if mouseEvent == -128 or mouseEvent == -127:
+                    print("cliqué !")
             else:
                 pass
             princippage.update()
 
-main.geometry("1260x400+100+220")
+ss=1440
+st=700
+main.geometry(str(ss)+"x"+str(st)+"+"+str(100)+"+"+str(220))
 
-Window_R(princippage=main,sizebar=4,height=400,width=1260)
-
-state_mouse = win32api.GetKeyState(0x01)
+Window_R(princippage=main,sizebar=20,height=st,width=ss, bgbar='cyan', bgcornerbar='blue')
 
 main.mainloop()
