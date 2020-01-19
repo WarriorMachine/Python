@@ -4,7 +4,6 @@ import os
 import win32api
 
 main = Tk()
-main.title("ResizableWindow")
 main.overrideredirect(1)
 main['bg']='crimson'
 
@@ -27,7 +26,7 @@ class Window_R():
         maskechelle8 = Frame(resizebarpage, bd=0, bg=bgcornerbar, cursor="size_nw_se")
         maskechelle8.place(x=width-(sizebar+1), y=height-(sizebar+1), width=sizebar+1, height=sizebar+1)
         while 1:
-            mouseEvent = win32api.GetKeyState(0x01)
+            mouseEvent = win32api.GetKeyState(0x01) #etat du clique gauche
             x = princippage.winfo_rootx() #x = sL
             y = princippage.winfo_rooty() #y = sH
             mouseX = princippage.winfo_pointerx()
