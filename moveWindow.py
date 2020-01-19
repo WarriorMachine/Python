@@ -19,14 +19,13 @@ class Window_R():
             time.sleep(0.01)
             if mouseY>=y and mouseY<=y+sizebar-1 and mouseX>=x and mouseX<=x+width:
                 if mouseEvent == -128 or mouseEvent == -127:
-                    depMouseX = princippage.winfo_pointerx()
                     while 1:
                         mouseX = princippage.winfo_pointerx()
                         mouseY = princippage.winfo_pointery()
-                        newdim = str(width)+"x"+str(height)+"+"+str()+"+"+str(mouseY)
-                        main.geometry(newdim)
-                        main.update()
+                        newdim = str(width)+"x"+str(height)+"+"+str(mouseX-round(width/2))+"+"+str(mouseY)
+                        princippage.geometry(newdim)
                         mouseEvent = win32api.GetKeyState(0x01)
+                        princippage.update()
                         if mouseEvent == -127 or mouseEvent == -128:
                             pass
                         else:
