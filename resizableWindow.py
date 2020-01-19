@@ -35,15 +35,16 @@ class Window_R():
             time.sleep(0.01)
             if mouseX>=x and mouseX<=x+sizebar-1 and mouseY>=y and mouseY<=y+height or mouseX>=x+width-sizebar and mouseX<=x+width and mouseY>=y and mouseY<=y+height or mouseY>=y and mouseY<=y+sizebar-1 and mouseX>=x and mouseX<=x+width or mouseY>=y+height-sizebar and mouseY<=y+height and mouseX>=x and mouseX<=x+width:
                 if mouseEvent == -128 or mouseEvent == -127:
-                    print("cliqué !")
+                    print("cliqué")
             else:
                 pass
             princippage.update()
+
 
 ss=1440
 st=700
 main.geometry(str(ss)+"x"+str(st)+"+"+str(100)+"+"+str(220))
 
-Window_R(princippage=main,sizebar=20,height=st,width=ss, bgbar='cyan', bgcornerbar='blue')
+Window_R(princippage=main,sizebar=2,height=st,width=ss, bgbar='cyan', bgcornerbar='blue')
 
 main.mainloop()
