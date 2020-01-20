@@ -38,8 +38,7 @@ class Window_R():
                     mouseY = princippage.winfo_pointery()
                     x = princippage.winfo_rootx() #x = sL
                     y = princippage.winfo_rooty() #y = sH
-                    if mouseX>=x and mouseX<=x+sizebar-1 and mouseY>=y and mouseY<=y+height: 
-                        print("G")
+                    if mouseX>=x and mouseX<=x+sizebar-1 and mouseY>=y and mouseY<=y+height: #Gauche
                         while 1:
                             newmouseX = princippage.winfo_pointerx()
                             newval = newmouseX - mouseX
@@ -79,8 +78,7 @@ class Window_R():
                                 pass
                             else:
                                 break
-                    elif mouseX>=x+width-sizebar and mouseX<=x+width and mouseY>=y and mouseY<=y+height:
-                        print("D")
+                    elif mouseX>=x+width-sizebar and mouseX<=x+width and mouseY>=y and mouseY<=y+height: #Droite
                         while 1:
                             newmouseX = princippage.winfo_pointerx()
                             newval = newmouseX - mouseX
@@ -119,8 +117,7 @@ class Window_R():
                                 pass
                             else:
                                 break
-                    elif mouseY>=y and mouseY<=y+sizebar-1 and mouseX>=x and mouseX<=x+width:
-                        print("H")
+                    elif mouseY>=y and mouseY<=y+sizebar-1 and mouseX>=x and mouseX<=x+width: #Haut
                         while 1:
                             newmouseY = princippage.winfo_pointery()
                             newval = newmouseY - mouseY
@@ -159,8 +156,7 @@ class Window_R():
                                 pass
                             else:
                                 break
-                    elif mouseY>=y+height-sizebar and mouseY<=y+height and mouseX>=x and mouseX<=x+width:
-                        print("B")
+                    elif mouseY>=y+height-sizebar and mouseY<=y+height and mouseX>=x and mouseX<=x+width: #Bas
                         while 1:
                             newmouseY = princippage.winfo_pointery()
                             newval = newmouseY - mouseY
