@@ -81,7 +81,7 @@ def file():
     cycler = cycle(thedirBRUT)
     framelistpara = Frame(backFrameFolder, bg = '#0f0f0f')
     framelistpara.place(x=0, y=30, width=200, height=haut-60)
-    listpara = Listbox(framelistpara, bd = 0, borderwidth=0, bg = '#0f0f0f',highlightthickness=0, fg = 'gray50', selectforeground='gray90', selectbackground='#111111', cursor="cross", font=('Gotham', 10, 'normal'), exportselection=0, selectmode=SINGLE)
+    listpara = Listbox(framelistpara, bd = 0, borderwidth=0, bg = '#0f0f0f',highlightthickness=0, fg = 'gray50', selectforeground='crimson', selectbackground='#111111', cursor="cross", font=('Gotham', 10, 'normal'), exportselection=0, selectmode=SINGLE)
     listpara.place(x=0, y=0, width=200, height=haut-60)
     for i in range(0, numberfile):
         current_dir = next(cycler)
