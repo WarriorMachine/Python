@@ -3,6 +3,8 @@
 from tkinter import *
 from tkinter import filedialog
 from itertools import cycle
+from PIL import Image
+from PIL import ImageTk
 import os
 
 repertoire = "D:/Code/Python/cache"
@@ -49,28 +51,32 @@ def file():
     def clicListbox(ListBox):
         fileText = Text(backFrame,background="#0f0f0f", maxundo=-1, wrap='none',foreground="gray90",insertbackground='crimson',highlightthickness=0,borderwidth=0,selectbackground='#222222')
         fileText.place(x=200,y=30,width=large-200,height=haut-30)
-        try:
-            cache = open(str(repertoire)+"/cacheGraphicDir.wt", "r")
-            cacheread = cache.read()
-            stockListbox = StringVar()
-            stockListbox = listpara.get(listpara.curselection())
-            finalcacheread = str(cacheread)+"/"+str(stockListbox)
-            finalfileread = open(finalcacheread, encoding='UTF8', errors='ignore').read()
-            fileText.insert(END,finalfileread)
-            cache.close()
-        except:
-            stockListbox = StringVar()
-            stockListbox = listpara.get(listpara.curselection())
-            fileText.insert(END," Erreur "+str(stockListbox)+" ne peu être lu ")
+        stockListbox = StringVar()
+        stockListbox = listpara.get(listpara.curselection())
+        if stockListbox[-4:] == ".png" or stockListbox[-4:] == ".PNG" or stockListbox[-4:] == ".jpg" or stockListbox[-4:] == ".JPG":
+            fileText.insert(END," Cette image est indisponnible ")
             numb = len(stockListbox)
-            fileText.tag_add("error1", "1.0", "1.8")
+            fileText.tag_add("error1", "1.0", "1.10000")
             fileText.tag_config("error1", background="crimson", foreground="white")
-            var1 = '1.'+str(round(7+numb+1))
-            fileText.tag_add("error2", "1.8", var1)
-            fileText.tag_config("error2", background="crimson", foreground="black")
-            var2 = '1.'+str(round(7+numb+1))
-            fileText.tag_add("error3", var2, "1.100000")
-            fileText.tag_config("error3", background="crimson", foreground="white")
+        else:
+            try:
+                cache = open(str(repertoire)+"/cacheGraphicDir.wt", "r")
+                cacheread = cache.read()
+                finalcacheread = str(cacheread)+"/"+str(stockListbox)
+                finalfileread = open(finalcacheread, encoding='UTF8', errors='ignore').read()
+                fileText.insert(END,finalfileread)
+                cache.close()
+            except:
+                fileText.insert(END," Erreur "+str(stockListbox)+" ne peu être lu ")
+                numb = len(stockListbox)
+                fileText.tag_add("error1", "1.0", "1.8")
+                fileText.tag_config("error1", background="crimson", foreground="white")
+                var1 = '1.'+str(round(7+numb+1))
+                fileText.tag_add("error2", "1.8", var1)
+                fileText.tag_config("error2", background="crimson", foreground="black")
+                var2 = '1.'+str(round(7+numb+1))
+                fileText.tag_add("error3", var2, "1.100000")
+                fileText.tag_config("error3", background="crimson", foreground="white")
 
     filename =  filedialog.askdirectory(initialdir = "/",title = "Ouvrir un dossier")
     thedirBRUT = os.listdir(filename)
