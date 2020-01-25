@@ -6,7 +6,7 @@ from itertools import cycle
 import os
 import time
 
-repertoire = "E:/"
+repertoire = ""
 
 main = Tk()
 main.title("GraphicDir")
@@ -61,14 +61,16 @@ def moreFichier():
 def file():
     def clicListbox(ListBox):
         fileText = Text(backFrame,background="#0c0c0c", maxundo=-1, wrap='none',foreground="gray90",insertbackground='crimson',highlightthickness=0,borderwidth=0,selectbackground='#222222')
-        fileText.place(x=200,y=30,width=large-200,height=haut-30)
+        fileText.place(x=290,y=30,width=large-200,height=haut-30)
         stockListbox = StringVar()
         stockListbox = listpara.get(listpara.curselection())
-        if stockListbox[-4:] == ".png" or stockListbox[-4:] == ".PNG" or stockListbox[-4:] == ".jpg" or stockListbox[-4:] == ".JPG":
-            fileText.insert(END," Cette image est indisponnible ")
+        if stockListbox[-4:] == ".png" or stockListbox[-4:] == ".PNG" or stockListbox[-4:] == ".jpg" or stockListbox[-4:] == ".JPG" or stockListbox[-5:] == ".jpeg" or stockListbox[-5:] == ".JPEG" or stockListbox[-4:] == ".gif":
+            fileText.insert(END," Cette image n'est pas disponnible ")
             numb = len(stockListbox)
-            fileText.tag_add("error1", "1.0", "1.10000")
+            fileText.tag_add("error1", "1.0", "1.100000")
             fileText.tag_config("error1", background="crimson", foreground="white")
+            hideFrame = Frame(backFrame, bg='#0c0c0c')
+            hideFrame.place(x=250, y=30, width=35, height=haut-30)
         else:
             try:
                 cache = open(str(repertoire)+"/cacheGraphicDir.wt", "r")
@@ -77,7 +79,25 @@ def file():
                 finalfileread = open(finalcacheread, encoding='UTF8', errors='ignore').read()
                 fileText.insert(END,finalfileread)
                 cache.close()
-            except:
+                hideFrame = Frame(backFrame, bg='#0c0c0c')
+                hideFrame.place(x=250, y=30, width=35, height=haut-30)
+                fd = open(finalcacheread, 'r')
+                n = 0
+                while fd.readline():
+                    n += 1
+                numberline = Listbox(backFrame, activestyle='none', bd = 0, borderwidth=0, bg = '#111111',highlightthickness=0, fg = 'gray50', selectforeground='gray50', selectbackground='#111111', cursor="cross", font=('Consolas', 10, 'normal'), exportselection=0, selectmode=SINGLE)
+                numberline.place(x=250, y=30, width=35, height=haut-30)
+                for i in range(1,n+1):
+                    if i >= 0 and i < 10:
+                        n = "   "+str(i)
+                    elif i >= 10 and i < 99:
+                        n = "  "+str(i)
+                    elif i >= 100 and i < 999:
+                        n = " "+str(i)
+                    elif i >= 1000 and i < 9999:
+                        n = ""+str(i)
+                    numberline.insert(i, str(n))
+            except ALL:
                 fileText.insert(END," Erreur "+str(stockListbox)+" ne peu être lu ")
                 numb = len(stockListbox)
                 fileText.tag_add("error1", "1.0", "1.8")
@@ -88,6 +108,8 @@ def file():
                 var2 = '1.'+str(round(7+numb+1))
                 fileText.tag_add("error3", var2, "1.100000")
                 fileText.tag_config("error3", background="crimson", foreground="white")
+                hideFrame = Frame(backFrame, bg='#0c0c0c')
+                hideFrame.place(x=250, y=30, width=35, height=haut-30)
 
     filename =  filedialog.askdirectory(initialdir = "/",title = "Ouvrir un dossier")
     thedirBRUT = os.listdir(filename)
@@ -99,7 +121,7 @@ def file():
     framelistpara = Frame(backFrameFolder, bg = '#0f0f0f')
     framelistpara.place(x=0, y=30, width=200, height=haut-60)
     listpara = Listbox(framelistpara, bd = 0, borderwidth=0, bg = '#0f0f0f',highlightthickness=0, fg = 'gray50', selectforeground='crimson', selectbackground='#111111', cursor="cross", font=('Gotham', 10, 'normal'), exportselection=0, selectmode=SINGLE)
-    listpara.place(x=0, y=0, width=200, height=haut-60)
+    listpara.place(x=0, y=0, width=250, height=haut-60)
     for i in range(0, numberfile):
         current_dir = next(cycler)
         listpara.insert(i, str(current_dir))
@@ -114,7 +136,7 @@ backFrameBar = Frame(main, bg='#111111')
 backFrameBar.place(x=0,y=0,width=large,height=30)
 reduire = Button(backFrameBar, text="━", relief = FLAT, bd = 0, bg = '#111111', fg = 'gray80', cursor="cross", activebackground='#534692', command=reduct)
 reduire.place(x=large-150, y=0, width=50, height=30)
-augmenter = Button(backFrameBar, text="☐", relief = FLAT, bd = 0, bg = '#111111', fg = 'gray80', cursor="cross", activebackground='#634481', command=OverRider)
+augmenter = Button(backFrameBar, text="☐", relief = FLAT, bd = 0, bg = '#111111', fg = 'gray80', cursor="cross", activebackground='#634481')
 augmenter.place(x=large-100, y=0, width=50, height=30)
 fermer = Button(backFrameBar, text="✕", relief = FLAT, bd = 0, bg = '#111111', fg = 'gray80', cursor="cross", command=CloseAll, activebackground='crimson')
 fermer.place(x=large-50, y=0, width=50, height=30)
@@ -130,8 +152,10 @@ points = Button(backFrameBar, text="Aide", relief = FLAT, bd = 0, bg = '#111111'
 points.place(x=200, y=0, width=30, height=30)
 
 backFrameFolder = Frame(main, bg='#0f0f0f')
-backFrameFolder.place(x=0,y=30,width=200,height=haut)
+backFrameFolder.place(x=0,y=30,width=250,height=haut)
+backFrameFoldr = Frame(main, bg='#111111')
+backFrameFoldr.place(x=250,y=30,width=1,height=haut)
 choose = Button(backFrameFolder, text='+ Choisir un dossier', anchor='center', bg ='#0f0f0f', fg='gray90', relief=FLAT, bd = 0, cursor="cross", activebackground='mediumseagreen', font=('Gotham', 9, 'normal'),command=file)
-choose.place(x=0, y=2, width=200, height=22)
+choose.place(x=0, y=2, width=250, height=22)
 
 main.mainloop()
