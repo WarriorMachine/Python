@@ -70,7 +70,7 @@ def file():
             fileText.tag_add("error1", "1.0", "1.100000")
             fileText.tag_config("error1", background="crimson", foreground="white")
             hideFrame = Frame(backFrame, bg='#0c0c0c')
-            hideFrame.place(x=250, y=30, width=35, height=haut-30)
+            hideFrame.place(x=250, y=32, width=35, height=haut-28)
         else:
             try:
                 cache = open(str(repertoire)+"/cacheGraphicDir.wt", "r")
@@ -80,13 +80,13 @@ def file():
                 fileText.insert(END,finalfileread)
                 cache.close()
                 hideFrame = Frame(backFrame, bg='#0c0c0c')
-                hideFrame.place(x=250, y=30, width=35, height=haut-30)
+                hideFrame.place(x=250, y=32, width=35, height=haut-28)
                 fd = open(finalcacheread, 'r')
                 n = 0
                 while fd.readline():
                     n += 1
                 numberline = Listbox(backFrame, activestyle='none', bd = 0, borderwidth=0, bg = '#111111',highlightthickness=0, fg = 'gray50', selectforeground='gray50', selectbackground='#111111', cursor="cross", font=('Consolas', 10, 'normal'), exportselection=0, selectmode=SINGLE)
-                numberline.place(x=250, y=30, width=35, height=haut-30)
+                numberline.place(x=250, y=32, width=35, height=haut-28)
                 for i in range(1,n+1):
                     if i >= 0 and i < 10:
                         n = "   "+str(i)
@@ -96,7 +96,7 @@ def file():
                         n = " "+str(i)
                     elif i >= 1000 and i < 9999:
                         n = ""+str(i)
-                    numberline.insert(i, str(n))
+                    numberline.insert("end", str(n))
             except ALL:
                 fileText.insert(END," Erreur "+str(stockListbox)+" ne peu être lu ")
                 numb = len(stockListbox)
@@ -109,7 +109,7 @@ def file():
                 fileText.tag_add("error3", var2, "1.100000")
                 fileText.tag_config("error3", background="crimson", foreground="white")
                 hideFrame = Frame(backFrame, bg='#0c0c0c')
-                hideFrame.place(x=250, y=30, width=35, height=haut-30)
+                hideFrame.place(x=250, y=32, width=35, height=haut-28)
 
     filename =  filedialog.askdirectory(initialdir = "/",title = "Ouvrir un dossier")
     thedirBRUT = os.listdir(filename)
