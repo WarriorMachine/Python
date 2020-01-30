@@ -6,7 +6,7 @@ from itertools import cycle
 import os
 import time
 
-repertoire = "E:/"
+repertoire = ""
 
 main = Tk()
 main.title("GraphicDir")
@@ -45,6 +45,9 @@ def reduct():
         time.sleep(0.1)
     main.overrideredirect(1)
 
+def saveFichier():
+    filedialog.asksaveasfilename(initialdir = "/",title = "Sauvegarder un fichier", initialfile="fichier", defaultextension=".txt", filetypes = (("Texte brute", ".txt .gitignore"),("Batch", ".bat .cmd"),("C", ".c"),("C++", ".cpp .cc .cxx .hpp .hh .hxx .h .ino .inl .ipp"),("C#", ".cs .csx .cake"),("Clojure", ".clj .cljs .cljc .cljx .clojure .edn"),("CoffeeScript", ".coffee .cson"),("CSS", ".css"),("Diff", ".patch .diff .rej"),("Dockerfile", ".dockerfile"),("F#", ".fs .fsi .fsx .fsscript"),("Go", ".go"),("Groovy", ".groovy .gvy .gradle"),("Handlebars", ".handlebars .hbs .hjs"),("HLSL", ".hlsl .hlsi .fx .fxh .vsh .psh .cginc .compute"),("HTML", ".html .htm .shtml .xhtml .mdoc .jsp .asp .aspx .jshtm .volt"),("Ini", ".ini"),("Java", ".java .jav"),("JavaScript", ".js"),("JavaScript React", ".jsx"),("JSON", ".json .bowerrc .jshintrc .jscsrc .eslintrc .webmanifest .js.map .css.map"),("Less", ".less"),("Lua", ".lua"),("Log", ".log .log.?"),("Makefile", ".mk"),("Markdown", ".md .mkd .mdwn .mdown .markdown .markdn .mdtxt .mdtext .workbook"),("Objective-C", ".m"),("Objective-C++", ".mm"),("Perl", ".pl .pm .pod .t .PL .psgi"),("Perl 6", ".p6 .pl6 .pm6 .nqp"),("PHP", ".php .php4 .php5 .phtml .ctp"),("PowerShell", ".ps1 .psm1 .psd1 .pssc .psrc"),("Properties", ".properties .cfg .conf .desktop .directory"),("Pug", ".jade .pug"),("Python", ".py .pyw .rpy .cpy .gyp .gypi .snakefile .smk .pyi"),("R", ".r .rhistory .rprofile .rt"),("Razor", ".cshtml"),("Ruby", ".rb .rbx .rjs .gemspec .rake .ru .erb"),("Rust", ".rs"),("SCSS", ".scss"),("ShaderLab", ".shader"),("Shell Script", ".sh .bash .bash .bashrc .bash_aliases .bash_profile .bash_login .ebuild .install .profile .bash_logout"),("SQL", ".sql .dsql"),("Swift", ".swift"),("TypeScript", ".ts"),("TypeScript React", ".tsx"),("Visual Basic", ".vb .brs .vbs .bas"),("XML", ".xsl .xslt"),("YAML", ".yml .eyaml .eyml .yaml"),("Sans extention", ".")))
+
 morePageCount = 1
 def moreFichier():
     global morePageCount
@@ -59,6 +62,8 @@ def moreFichier():
         morePageCount = morePageCount+1
 
 def file():
+    def detect_key(event):
+        print('key : '+str(event.char))
     def clicListbox(ListBox):
         fileText = Text(backFrame,background="#0c0c0c", maxundo=-1, wrap='none',foreground="gray90",insertbackground='crimson',highlightthickness=0,borderwidth=0,selectbackground='#222222')
         fileText.place(x=290,y=30,width=large-200,height=haut-30)
@@ -110,7 +115,7 @@ def file():
                 fileText.tag_config("error3", background="crimson", foreground="white")
                 hideFrame = Frame(backFrame, bg='#0c0c0c')
                 hideFrame.place(x=250, y=32, width=35, height=haut-28)
-
+        fileText.bind('<KeyPress>', detect_key)
     filename =  filedialog.askdirectory(initialdir = "/",title = "Ouvrir un dossier")
     thedirBRUT = os.listdir(filename)
     cache = open(str(repertoire)+"/cacheGraphicDir.wt", "w")
@@ -144,7 +149,7 @@ points = Button(backFrameBar, text="•••", relief = FLAT, bd = 0, bg = '#11
 points.place(x=0, y=0, width=25, height=30)
 points = Button(backFrameBar, text="Fichier", relief = FLAT, bd = 0, bg = '#111111', fg = 'gray80', cursor="cross", activebackground='#111111', font=('Gotham', 9, 'normal'), command=file)
 points.place(x=30, y=0, width=50, height=30)
-points = Button(backFrameBar, text="Edition", relief = FLAT, bd = 0, bg = '#111111', fg = 'gray80', cursor="cross", activebackground='#111111', font=('Gotham', 9, 'normal'))
+points = Button(backFrameBar, text="Edition", relief = FLAT, bd = 0, bg = '#111111', fg = 'gray80', cursor="cross", activebackground='#111111', font=('Gotham', 9, 'normal'), command=saveFichier)
 points.place(x=80, y=0, width=50, height=30)
 points = Button(backFrameBar, text="Affichage", relief = FLAT, bd = 0, bg = '#111111', fg = 'gray80', cursor="cross", activebackground='#111111', font=('Gotham', 9, 'normal'))
 points.place(x=130, y=0, width=70, height=30)
