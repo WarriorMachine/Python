@@ -6,7 +6,7 @@ from itertools import cycle
 import os
 import time
 
-repertoire = ""
+repertoire = "E:/"
 
 main = Tk()
 main.title("GraphicDir")
@@ -49,7 +49,7 @@ morePageCount = 1
 def moreFichier():
     global morePageCount
     if morePageCount == 1:
-        This = Frame(main, bd=0, relief=FLAT, bg='#0b0b0b', cursor="tcross")
+        This = Frame(main, bd=0, relief=FLAT, cursor="tcross")
         This.place(x=35, y=30, width=100, height=20)
         newButton = Button(This, text="Nouveau fichier", relief = FLAT, bd = 0, bg = '#0b0b0b', fg = 'gray80', cursor="cross", activebackground='mediumseagreen', font=('Gotham', 9, 'normal'))
         newButton.place(x=0, y=0, width=100, height=20)
