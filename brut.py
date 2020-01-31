@@ -1,5 +1,5 @@
 class Brut:
-    def __init__(self, characters="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789/@?!:;.,~-", min=1, max=4, infos=1, wait_info=1):
+    def __init__(self, characters="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/@?!:;.,~-", min=1, max=4, infos=1, wait_info=1):
         if min > 0 or max > 0:
             if min < max or min <= max:
                 if infos==1:
