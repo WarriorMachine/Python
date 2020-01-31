@@ -92,7 +92,7 @@ def file():
                     n = " "+str(i)
                 elif i >= 1000 and i < 9999:
                     n = ""+str(i)
-            numberline.insert("end", str(n))
+                numberline.insert("end", str(n))
         if stockListbox[-4:] == ".png" or stockListbox[-4:] == ".PNG" or stockListbox[-4:] == ".jpg" or stockListbox[-4:] == ".JPG" or stockListbox[-5:] == ".jpeg" or stockListbox[-5:] == ".JPEG" or stockListbox[-4:] == ".gif":
             fileText.insert(END," Cette image n'est pas disponnible ")
             numb = len(stockListbox)
