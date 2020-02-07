@@ -23,6 +23,8 @@ sH = haut/2-(768/2)
 screen_resolutionMain = str(round(large))+'x'+str(round(haut))+'+'+str(0)+'+'+str(0)
 main.geometry(screen_resolutionMain)
 
+data_filename = dict()
+
 def CloseAll():
     main.destroy()
     sys.exit()
@@ -102,12 +104,10 @@ def file():
             hideFrame.place(x=250, y=32, width=35, height=haut-28)
         else:
             try:
-                cache = open(str(repertoire)+"/cacheGraphicDir.wt", "r")
-                cacheread = cache.read()
+                cacheread = data_filename['filename']
                 finalcacheread = str(cacheread)+"/"+str(stockListbox)
                 finalfileread = open(finalcacheread, encoding='UTF8', errors='ignore').read()
                 fileText.insert(END,finalfileread)
-                cache.close()
                 hideFrame = Frame(backFrame, bg='#0c0c0c')
                 hideFrame.place(x=250, y=32, width=35, height=haut-28)
                 fd = open(finalcacheread, 'r')
@@ -142,9 +142,7 @@ def file():
         fileText.bind('<KeyPress>', detect_key)
     filename =  filedialog.askdirectory(initialdir = "/",title = "Ouvrir un dossier")
     thedirBRUT = os.listdir(filename)
-    cache = open(str(repertoire)+"/cacheGraphicDir.wt", "w")
-    cache.write(str(filename))
-    cache.close()
+    data_filename['filename'] = str(filename)
     numberfile = len(thedirBRUT)
     cycler = cycle(thedirBRUT)
     framelistpara = Frame(backFrameFolder, bg = '#0f0f0f')
