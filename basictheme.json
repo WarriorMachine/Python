@@ -1,15 +1,13 @@
 {
-    ### Text ###
+    _commentaire : Zone de TEXTE,
     Text.BackgroundColor = '#0c0c0c',
     Text.ForegroundColor = 'gray90',
     Text.CursorColor = 'crimson',
     Text.SelectBackground = '#222222',
 
-    ### Button ###
+    _commentaire: Zone des BOUTONS,
     Button.Choose.BackgroundColor = '#0f0f0f',
     Button.Menu.BackgroundColor = '#111111',
     Button.Menu.ForegroundColor = 'gray80',
     Button.Menu.ActiveBackgroundColor = '#111111'
-
-    ###  ###
 }
