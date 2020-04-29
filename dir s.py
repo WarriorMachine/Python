@@ -11,4 +11,5 @@ def drives():
 for disk in drives():
     for top, dirs, files in os.walk(str(disk+":/")):
         for nm in files:
-            print(str(os.path.join(top, nm)))
+            access = os.path.join(top, nm)
+            print(access)
