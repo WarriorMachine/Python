@@ -23,7 +23,7 @@ def maj():
     plug = "🔒" if plugged else "🔓"
     plugtext.configure(fg="mediumseagreen") if plugged else plugtext.configure(fg="gold")
     if battery.percent >= 50:
-        percenttext.configure(fg="springgreen") 
+        percenttext.configure(fg="springgreen")
     elif battery.percent > 25:
         percenttext.configure(fg="mediumseagreen")
     elif battery.percent > 15 :
@@ -45,7 +45,7 @@ timer = StringVar()
 percenttext = Button(main, textvariable=perct, bg='#1a1a1a', fg='gray60', border=0, activebackground="#1a1a1a", activeforeground="#1a1a1a", command= lambda:moreLess(True))
 percenttext.place(x=0, y=2, width= ll/1.5, height= 12)
 plugtext = Button(main, textvariable=connect, bg='#1a1a1a', fg='gray60', border=0, activebackground="#1a1a1a", activeforeground="#1a1a1a", command= lambda:moreLess(True))
-plugtext.place(x=ll/1.5, y=2, width= ll/3, height= 12)
+plugtext.place(x=ll/1.5, y=2, width= ll-ll/1.5, height= 12)
 timetext = Button(main, textvariable=timer, bg='#1a1a1a', fg='gray60', border=0, activebackground="#1a1a1a", activeforeground="#1a1a1a", command= lambda:moreLess(False)).place(x=0, y=15, width= ll, height= 10)
 quitbutton = Button(main, text="❌", bg='#1a1a1a', fg='#1a1a1a', activebackground='crimson', border=0, command=quit).place(x=ll-7, y=0, width= 7, height= 7)
 
