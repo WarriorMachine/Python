@@ -1,12 +1,12 @@
 #By WarriorMachine (Paul.M.)
 from tkinter import *
 
-#1 Blanc
-#2 Orange
-#3 Jaune
-#4 Rouge
-#5 Bleu
-#6 Vert
+#1 = Blanc
+#2 = Orange
+#3 = Jaune
+#4 = Rouge
+#5 = Bleu
+#6 = Vert
 
 f_haute  = [5,5,5, # array corresponding to the upper face
             5,5,5, # tableau correspondant à la face haute
