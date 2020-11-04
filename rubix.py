@@ -1,3 +1,4 @@
+#By WarriorMachine (Paul.M.)
 from tkinter import *
 
 #1 Blanc
@@ -7,30 +8,32 @@ from tkinter import *
 #5 Bleu
 #6 Vert
 
-f_haute  = [5,5,5,
-            5,5,5,
+f_haute  = [5,5,5, # array corresponding to the upper face
+            5,5,5, # tableau correspondant à la face haute
             5,5,5]
 
-f_basse  = [6,6,6,
-            6,6,6,
+f_basse  = [6,6,6, # array corresponding to the lower face
+            6,6,6, # tableau correspondant à la face basse
             6,6,6]
 
-f_droite = [4,4,4,
-            4,4,4,
+f_droite = [4,4,4, # array corresponding to the right face
+            4,4,4, # tableau correspondant à la face droite
             4,4,4]
 
-f_gauche = [2,2,2,
-            2,2,2,
+f_gauche = [2,2,2, # array corresponding to the left face
+            2,2,2, # tableau correspondant à la face gauche
             2,2,2]
 
-f_fond   = [3,3,3,
-            3,3,3,
+f_fond   = [3,3,3, # array corresponding to the bottom face
+            3,3,3, # tableau correspondant à la face du fond
             3,3,3]
 
-f_face   = [1,1,1,
-            1,1,1,
+f_face   = [1,1,1, # array corresponding to the visible face
+            1,1,1, # tableau correspondant à la face de face
             1,1,1]
 
+#start of the part to create the window and manage it
+# début de la partie pour créer la fenêtre et la gérer
 main = Tk()
 main.title("Rubix Game")
 w_large, w_haut = main.winfo_screenwidth(), main.winfo_screenheight()
@@ -65,7 +68,11 @@ def button_Placer(text, p_x, x, p_y, y, side ,command):
 def color(n):
     switcher={1:'white',2:'orange',3:'yellow',4:'red',5:'blue',6:'green'}
     return switcher.get(n)
+#end of the part to create the window and manage it
+#fin de la partie pour créer la fenêtre et la gérer
 
+#display the rendering of the rubik's cube according to the array
+#affiche le rendu du rubikscube en fonction des tableaux
 def render():
     for i in range(0,9):
         cube_NN = Frame(rubixFrame, bg=color(f_face[i]))
@@ -76,6 +83,8 @@ def render():
         elif i <= 9:
             cube_NN.place(x=500/3*(i-6),y=500/3*2, width=500/3, height=500/3)
 
+#management of array following the rotation chosen
+#gestion des tableau suivant la rotaion choisis
 def move(arg):
     if arg == 0:
         stock = f_face[0:3]
