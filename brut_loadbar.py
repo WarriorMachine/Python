@@ -1,7 +1,7 @@
 def Brut(characters="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789/@?!:;.,~-", min=1, max=4, lenght_bar=50): #71
     total = 0
     for p in range(1, max+1-min+1):
-        total = total + (len(characters)**p)
+        total =+ (len(characters)**p)
 
     sys.stdout.write("Loading : |%s|" % (" " * lenght_bar))
     sys.stdout.flush()
